@@ -1,0 +1,7 @@
+# .NET
+.vs
+bin/
+obj/
+PublishProfiles/
+*.user
+*Zip Deploy*

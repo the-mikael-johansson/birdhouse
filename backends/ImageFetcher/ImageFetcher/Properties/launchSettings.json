@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ImageFetcher": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --port 443 --pause-on-error",
+      "environmentVariables": {
+        "BaseUrl": "http://xxx:xxx",
+        "BasicAuth": "xxx:xxx"
+      }
+    }
+  }
+}
