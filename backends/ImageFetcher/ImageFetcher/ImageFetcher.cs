@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using ImageFetcher.Services;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace ImageFetcher
 {
@@ -43,7 +44,7 @@ namespace ImageFetcher
                 return new ContentResult
                 {
                     StatusCode = result.Code,
-                    Content = result.Message
+                    Content = JsonConvert.SerializeObject(result.ErrorMessage)
                 };
             }
         }

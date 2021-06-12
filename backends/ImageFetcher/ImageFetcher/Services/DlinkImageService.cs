@@ -6,12 +6,13 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Mimiware.ServiceResult;
 
 namespace ImageFetcher.Services
 {
     public interface IDlinkImageService
     {
-        Task<ServiceResult<byte[]>> GetImageBytesAsync();
+        Task<IServiceResult<byte[]>> GetImageBytesAsync();
     }
 
     public class DlinkImageService : IDlinkImageService
@@ -45,8 +46,9 @@ namespace ImageFetcher.Services
             _httpClient.DefaultRequestHeaders.Authorization = authorization;
         }
 
-        public async Task<ServiceResult<byte[]>> GetImageBytesAsync()
+        public async Task<IServiceResult<byte[]>> GetImageBytesAsync()
         {
+            var result = new ServiceResult<byte[]>();
             try
             {
                 _logger.LogInformation("Getting image");
@@ -54,12 +56,12 @@ namespace ImageFetcher.Services
 
                 var bytes = await response.Content.ReadAsByteArrayAsync();
 
-                return ServiceResult<byte[]>.Ok(bytes);
+                return result.Ok(bytes);
             }
             catch (Exception e)
             {
                 _logger.LogError(e, "Exception");
-                return ServiceResult<byte[]>.Error(e.ToString());
+                return result.Error(message: e.ToString());
             }
         }
     }
