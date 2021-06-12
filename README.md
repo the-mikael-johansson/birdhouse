@@ -1,4 +1,4 @@
-https://github.com/the-mikael-johansson/birdhouse/actions/workflows/ci-pipeline.yml/badge.svg
+![ci pipeline](https://github.com/the-mikael-johansson/birdhouse/actions/workflows/ci-pipeline.yml/badge.svg)
 
 # Birdhouse with surveillance system
 
